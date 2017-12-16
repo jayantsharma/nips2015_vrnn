@@ -4,7 +4,7 @@ mpl.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy.signal
-import theano.tensor as T
+# import theano.tensor as T
 
 from cle.cle.data import TemporalSeries
 from cle.cle.data.prep import SequentialPrepMixin
@@ -77,6 +77,7 @@ class IAMOnDB(TemporalSeries, SequentialPrepMixin):
 
         self.labels = [np.array(y)]
 
+        # import pdb; pdb.set_trace();
         return [X]
 
     def theano_vars(self):
