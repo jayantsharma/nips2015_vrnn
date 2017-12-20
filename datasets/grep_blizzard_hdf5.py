@@ -1,5 +1,9 @@
 # -*- coding: utf 8 -*-
 from __future__ import division
+from __future__ import print_function
+from __future__ import unicode_literals
+from builtins import zip
+from builtins import range
 import ipdb
 import os
 import numpy as np
@@ -60,7 +64,7 @@ def fetch_blizzard(data_path, shuffle=0, sz=32000, file_name="full_blizzard.h5")
                     e.append(None)
                     starts = e[:-1]
                     stops = e[1:]
-                    endpoints = zip(starts, stops)
+                    endpoints = list(zip(starts, stops))
 
                     for i, j in endpoints:
                         di_new = di[i:j]
@@ -112,7 +116,7 @@ def fetch_blizzard_tbptt(data_path, sz=8000, batch_size=100, file_name="blizzard
                 d = np.load(fp)
                 large_d = d[0]
 
-                for i in xrange(1, len(d)):
+                for i in range(1, len(d)):
                     print("Processing line %i of %i" % (i+1, len(d)))
                     di = d[i]
 

@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+from builtins import str
 import ipdb
 import matplotlib as mpl
 mpl.use('Agg')
@@ -85,7 +87,7 @@ def inner_fn(s_tm1):
                 outputs_info=[s_0, None, None],
                 n_steps=n_steps)
 
-for k, v in updates.iteritems():
+for k, v in updates.items():
     k.default_update = v
 
 test_fn = theano.function(inputs=[],

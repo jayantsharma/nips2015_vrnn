@@ -1,3 +1,6 @@
+from __future__ import print_function
+from __future__ import unicode_literals
+from builtins import range
 import ipdb
 import os
 import numpy as np
@@ -71,7 +74,7 @@ class Blizzard(TemporalSeries, SequentialPrepMixin):
             n_inter = 10000
             range_end = np.int(np.ceil(len(X) / float(n_inter)))
 
-            for i in xrange(range_end):
+            for i in range(range_end):
                 n_seen += 1
                 i_start = i*n_inter
                 i_end = min((i+1)*n_inter, len(X))
@@ -88,7 +91,7 @@ class Blizzard(TemporalSeries, SequentialPrepMixin):
                     prev_mean = curr_mean
                     prev_var = curr_var
 
-                print "[%d / %d]" % (i+1, range_end)
+                print("[%d / %d]" % (i+1, range_end))
 
             save_file_name = self.file_name + '_normal.npz'
             self.X_mean = prev_mean
@@ -240,7 +243,7 @@ class Blizzard_tbptt(Blizzard):
             else:
                 range_end = np.int(np.ceil(len(X) / float(n_inter)))
 
-            for i in xrange(range_start, range_end):
+            for i in range(range_start, range_end):
                 n_seen += 1
                 i_start = i*n_inter
                 i_end = min((i+1)*n_inter, len(X))
@@ -257,7 +260,7 @@ class Blizzard_tbptt(Blizzard):
                     prev_mean = curr_mean
                     prev_var = curr_var
 
-                print "[%d / %d]" % (i+1, range_end)
+                print("[%d / %d]" % (i+1, range_end))
 
             save_file_name = self.file_name + '_normal.npz'
             self.X_mean = prev_mean

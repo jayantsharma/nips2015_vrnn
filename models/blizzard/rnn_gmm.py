@@ -1,3 +1,5 @@
+from __future__ import print_function
+from __future__ import unicode_literals
 import ipdb
 import numpy as np
 import theano
@@ -48,11 +50,11 @@ def main(args):
     lr = float(args['lr'])
     debug = int(args['debug'])
 
-    print "trial no. %d" % trial
-    print "batch size %d" % batch_size
-    print "learning rate %f" % lr
-    print "saving pkl file '%s'" % pkl_name
-    print "to the save path '%s'" % save_path
+    print("trial no. %d" % trial)
+    print("batch size %d" % batch_size)
+    print("learning rate %f" % lr)
+    print("saving pkl file '%s'" % pkl_name)
+    print("to the save path '%s'" % save_path)
 
     rnn_dim = 4000
     p_x_dim = 700
@@ -227,7 +229,7 @@ def main(args):
                                     sequences=[x_4_temp],
                                     outputs_info=[s_0])
 
-    for k, v in updates.iteritems():
+    for k, v in updates.items():
         k.default_update = v
 
     shared_updates[rnn_tm1] = s_temp[-1]
@@ -261,7 +263,7 @@ def main(args):
                                         sequences=[m_x_4_temp],
                                         outputs_info=[m_s_0])
 
-    for k, v in m_updates.iteritems():
+    for k, v in m_updates.items():
         k.default_update = v
 
     m_s_temp = T.concatenate([m_s_0[None, :, :], m_s_temp[:-1]], axis=0)

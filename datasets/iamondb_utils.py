@@ -1,9 +1,16 @@
 from __future__ import division
+from __future__ import print_function
+from __future__ import unicode_literals
+from future import standard_library
+standard_library.install_aliases()
+from builtins import zip
+from builtins import range
 import os
 import matplotlib.pyplot as plt
 import numpy as np
-import cPickle
+import pickle
 import fnmatch
+import re
 
 from lxml import etree
 
@@ -133,10 +140,10 @@ def fetch_iamondb(data_path):
     valid_npy_x = os.path.join(partial_path, "valid_npy_x.npy")
     valid_npy_y = os.path.join(partial_path, "valid_npy_y.npy")
 
-    train_set = (zip(train_stroke_files, train_ascii_files),
+    train_set = (list(zip(train_stroke_files, train_ascii_files)),
                  train_npy_x, train_npy_y)
 
-    valid_set = (zip(valid_stroke_files, valid_ascii_files),
+    valid_set = (list(zip(valid_stroke_files, valid_ascii_files)),
                  valid_npy_x, valid_npy_y)
 
     if not os.path.exists(train_npy_x):
@@ -148,10 +155,10 @@ def fetch_iamondb(data_path):
                 if n % 100 == 0:
                     print("Processing file %i of %i" % (n, len(se)))
                 with open(ascii_file) as fp:
-                    cleaned = [t.strip() for t in fp.readlines()
-                               if t != '\r\n'
-                               and t != '\n'
-                               and t != ' \r\n']
+                    cleaned = [ t.strip() for t in fp.readlines() if t.strip() ]
+#                                if t != '\r\n'
+#                                and t != '\n'
+#                                and t != ' \r\n']
 
                     # Try using CSR
                     idx = [n for
@@ -228,12 +235,12 @@ def fetch_iamondb(data_path):
                 x_set.extend(x)
                 y_set.extend(y)
 
-            cPickle.dump(x_set, open(x_npy_file, mode="wb"))
-            cPickle.dump(y_set, open(y_npy_file, mode="wb"))
+            pickle.dump(x_set, open(x_npy_file, mode="wb"))
+            pickle.dump(y_set, open(y_npy_file, mode="wb"))
 
-    train_x = cPickle.load(open(train_npy_x, mode="rb"))
-    train_y = cPickle.load(open(train_npy_y, mode="rb"))
-    valid_x = cPickle.load(open(valid_npy_x, mode="rb"))
-    valid_y = cPickle.load(open(valid_npy_y, mode="rb"))
+    train_x = pickle.load(open(train_npy_x, mode="rb"))
+    train_y = pickle.load(open(train_npy_y, mode="rb"))
+    valid_x = pickle.load(open(valid_npy_x, mode="rb"))
+    valid_y = pickle.load(open(valid_npy_y, mode="rb"))
 
     return (train_x, train_y, valid_x, valid_y)
