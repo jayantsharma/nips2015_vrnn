@@ -1,7 +1,7 @@
 trial 1
-data_path /raid/chungjun/data/iamondb/
-save_path /raid/chungjun/nips2015/iamondb/
-sample_path /raid/chungjun/nips2015/iamondb/sample/
+data_path /home/schrater/sharm546/vrnn/nips2015_vrnn/datasets/iamondb_text/tf/
+save_path /home/schrater/sharm546/vrnn/nips2015_vrnn/output/iamondb/tf/
+sample_path /home/schrater/sharm546/vrnn/nips2015_vrnn/output/iamondb/sample/tf/
 monitoring_freq 100
 epoch 1000
 batch_size 20
