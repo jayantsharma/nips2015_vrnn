@@ -1,9 +1,9 @@
 trial 1
-data_path /raid/chungjun/data/iamondb/
-save_path /raid/chungjun/nips2015/iamondb/
-sample_path /raid/chungjun/nips2015/iamondb/sample/
+data_path /home/schrater/sharm546/vrnn/nips2015_vrnn/datasets/iamondb_text/theano/
+save_path /home/schrater/sharm546/vrnn/nips2015_vrnn/output/iamondb/theano/
+sample_path /home/schrater/sharm546/vrnn/nips2015_vrnn/output/iamondb/sample/theano/
 monitoring_freq 100
-epoch 1000
+epoch 100
 batch_size 20
 x_dim 3
 z_dim 50
